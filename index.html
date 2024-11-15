@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="Stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="imagen-container"> </div>
+    <div class="fondo-negro-transparente"></div>
+
+
+    <div class="formulario">
+        <fieldset>
+            <h1>inicio de sesion</h1>
+            <fieldset>
+                <form id="login-form" onsubmit="return validarFormulario()">
+                    <div class="username">
+                        <input type="text" id="username" required>
+                        <label>correo electronico</label>
+                    </div>
+                    <div class="contraseña">
+                        <input type="password" id="password" required>
+                        <label>contraseña</label>
+                    </div>
+                    <div class="recordar">¿olvido su contraseña?</div>
+                    <input type="submit" value="iniciar">
+                </form>
+            </fieldset>
+    </div>
+    <script>
+        const usuarios = [
+            { username : 'alejandro', password: 'carlospene33'},
+            { username: 'usuario1', password: 'contraseña1' },
+            { username: 'usuario2', password: 'contraseña2' },
+            { username: 'usuario3', password: 'contraseña3' },
+            { username: 'usuario4', password: 'contraseña4' }
+        ];
+
+        function validarFormulario() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username === '' || password === '') {
+                alert('por favor, complete todos los campos.');
+                return false;
+            }
+
+            const usuarioValido = usuarios.find(user => user.username === username && user.password === password);
+            if (usuarioValido) {
+                window.location.href = 'pagina_usuarios.html';
+            }else {
+                alert('usuario o contraseña incorrecta. Por favor, intente de nuevo')
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>
